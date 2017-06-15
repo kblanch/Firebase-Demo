@@ -6,6 +6,13 @@
 <body>
 	<h3 id="username">The username is: </h3>
 	<input id="usernameInput">
+
+	<h3 id="email">Email is: </h3>
+	<input id="emailInput">
+
+	<h3 id="milkshake">Milkshake: </h3>
+	<input id="milkshakeInput">
+
 	<button id="saveUsername">SAVE</button>
 	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 	<script>
@@ -28,13 +35,26 @@
 
 	  document.getElementById("saveUsername").onclick = function () {
 	  	var username = document.getElementById("usernameInput").value;
+
+	  	var email = document.getElementById("emailInput").value;
+
+	  	var milkshake = document.getElementById("milkshakeInput").value;
+
+
 	  	console.log('works' + username);
 
 	  	//Save the user name to the database
 	  	database.ref().set({
-	  		username: username
+	  		username: username,
+	  		email: email,
+	  		milkshake: milkshake
 	  	});
 	  }
+
+
+	  database.ref().on("value", function (snapshot){
+	  	console.log(snapshot.val());
+	  });
 
 	</script>
 </body>
