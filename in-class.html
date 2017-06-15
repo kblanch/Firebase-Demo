@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document</title>
+</head>
+<body>
+	<h3 id="username">The username is: </h3>
+	<input id="usernameInput">
+	<button id="saveUsername">SAVE</button>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDQ0DIZPt-v1CidnWbfC5qXCU66pB650SA",
+	    authDomain: "kblanchdb.firebaseapp.com",
+	    databaseURL: "https://kblanchdb.firebaseio.com",
+	    projectId: "kblanchdb",
+	    storageBucket: "kblanchdb.appspot.com",
+	    messagingSenderId: "53357236301"
+	  };
+
+	  //Initializing the database with the configuration provided
+	  firebase.initializeApp(config);
+
+	  //Creating a variable that contains a reference to the database
+	  var database = firebase.database();
+	  console.log(database);
+
+	  document.getElementById("saveUsername").onclick = function () {
+	  	var username = document.getElementById("usernameInput").value;
+	  	console.log('works' + username);
+
+	  	//Save the user name to the database
+	  	database.ref().set({
+	  		username: username
+	  	});
+	  }
+
+	</script>
+</body>
+</html>
